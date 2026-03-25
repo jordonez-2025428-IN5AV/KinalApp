@@ -48,7 +48,6 @@ public class ClienteService implements IClienteService{
         //este metodo es de JpaRepository
     }
 
-
     @Override
     public List<Cliente> listarActivos() {
         return clienteRepository.findByEstado(1);
