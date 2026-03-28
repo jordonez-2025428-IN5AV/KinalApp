@@ -19,11 +19,3 @@ SpringBoot para la gestión de un sistema web**
 
 * **Clonar el repositorio**
 * **Ejecutar la aplicación desde IntelliJ idea**
-
-## Documentación
-
-* **Marcos x Yubini**
-
-## Solución de Errores
-
-* **Marcos x Yubini**

@@ -15,6 +15,8 @@ public class DetalleVenta {
     private double precioUnitario;
     @Column
     private double precioTotal;
+    @Column
+    private int estado;
 
     @ManyToOne
     @JoinColumn(name = "Productos_codigo_producto")

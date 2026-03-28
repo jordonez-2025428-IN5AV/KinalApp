@@ -1,19 +1,17 @@
 package com.jeremyjuarez.kinalapp.controller;
 
 import com.jeremyjuarez.kinalapp.entity.Productos;
-import com.jeremyjuarez.kinalapp.entity.Usuario;
 import com.jeremyjuarez.kinalapp.service.IProductosService;
-import com.jeremyjuarez.kinalapp.service.IUsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping
-@RestController("/productos")
-
+@RestController
+@RequestMapping("/productos")
 public class ProductoController {
+
     private final IProductosService productosService;
 
     public ProductoController(IProductosService productosService) {
@@ -26,9 +24,11 @@ public class ProductoController {
         return ResponseEntity.ok(productos);
     }
 
-    @GetMapping("/{codigo}")
+    @GetMapping("/buscar/{codigo}")
     public ResponseEntity<Productos> buscarPorDPI(@PathVariable String codigo){
-        return productosService.buscarPorCodigoP(codigo).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return productosService.buscarPorCodigoP(codigo)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -55,12 +55,12 @@ public class ProductoController {
     }
 
     @PutMapping("/{codigo}")
-    public ResponseEntity<?> actualizar(@PathVariable String codigoP, @RequestBody Productos productos){
+    public ResponseEntity<?> actualizar(@PathVariable String codigo, @RequestBody Productos productos){
         try {
-            if (!productosService.existerPorCodigo(codigoP)){
+            if (!productosService.existerPorCodigo(codigo)){
                 return ResponseEntity.notFound().build();
             }
-            Productos usuarioActualizado = productosService.actualizar(codigoP, productos);
+            Productos usuarioActualizado = productosService.actualizar(codigo, productos);
             return ResponseEntity.ok(usuarioActualizado);
         } catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());

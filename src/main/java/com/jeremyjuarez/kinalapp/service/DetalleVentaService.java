@@ -2,11 +2,13 @@ package com.jeremyjuarez.kinalapp.service;
 
 import com.jeremyjuarez.kinalapp.entity.DetalleVenta;
 import com.jeremyjuarez.kinalapp.repository.DetalleVentaRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DetalleVentaService implements IDetalleVentaService{
 
     private final DetalleVentaRepository detalleVentaRepository;
