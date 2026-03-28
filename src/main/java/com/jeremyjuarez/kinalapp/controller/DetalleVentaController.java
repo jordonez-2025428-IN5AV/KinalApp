@@ -1,7 +1,6 @@
 package com.jeremyjuarez.kinalapp.controller;
 
 import com.jeremyjuarez.kinalapp.entity.DetalleVenta;
-import com.jeremyjuarez.kinalapp.entity.Ventas;
 import com.jeremyjuarez.kinalapp.service.IDetalleVentaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,13 +8,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/detalles")
 public class DetalleVentaController {
+
     private final IDetalleVentaService detalleVentaService;
 
     public DetalleVentaController(IDetalleVentaService detalleVentaService) {
         this.detalleVentaService = detalleVentaService;
     }
-
 
     @GetMapping
     public ResponseEntity<List<DetalleVenta>> listar(){
@@ -23,9 +24,11 @@ public class DetalleVentaController {
         return ResponseEntity.ok(usuario);
     }
 
-    @GetMapping("/{codigo}")
+    @GetMapping("/buscar/{codigo}")
     public ResponseEntity<DetalleVenta> buscarPorDPI(@PathVariable String codigo){
-        return detalleVentaService.buscarPorCodigoDV(codigo).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return detalleVentaService.buscarPorCodigoDV(codigo)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
