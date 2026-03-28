@@ -71,8 +71,5 @@ public class DetalleVentaService implements IDetalleVentaService{
             throw new IllegalArgumentException("El precio del producto es obligatorio");
         }
 
-        if (detalleVenta.getPrecioTotal() == 0 ) {
-            throw new IllegalArgumentException("El precio es un dato obligatorio");
-        }
     }
 }

@@ -1,9 +1,8 @@
 package com.jeremyjuarez.kinalapp.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity //Crea la clase como una entidad
 @Table(name = "clientes") //Cambia el nombre a plural
@@ -19,6 +18,8 @@ public class Cliente {
     @Column
     private String direccionCliente;
     private int estado;
+    @OneToMany(mappedBy = "cliente")
+    private List<Ventas> ventas;
 
     public Cliente() {
     }

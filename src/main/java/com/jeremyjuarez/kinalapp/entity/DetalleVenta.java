@@ -34,6 +34,8 @@ public class DetalleVenta {
         this.precioTotal = precioTotal;
     }
 
+
+
     public String getCodigoDetalleVenta() {
         return codigoDetalleVenta;
     }
