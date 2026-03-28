@@ -1,6 +1,5 @@
 package com.jeremyjuarez.kinalapp.controller;
 
-import com.jeremyjuarez.kinalapp.entity.Cliente;
 import com.jeremyjuarez.kinalapp.entity.Usuario;
 import com.jeremyjuarez.kinalapp.service.IUsuarioService;
 import org.springframework.http.HttpStatus;
@@ -73,4 +72,6 @@ public class UsuarioController {
         List<Usuario> UsuariosA = userService.listarActivos();
         return ResponseEntity.ok(UsuariosA);
     }
+
+
 }
