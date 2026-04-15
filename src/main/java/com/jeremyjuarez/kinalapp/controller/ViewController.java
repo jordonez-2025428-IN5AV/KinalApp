@@ -104,7 +104,8 @@ public class ViewController {
 
     @GetMapping("/ventas/nuevo")
     public String nuevaVenta(Model model, HttpSession session) {
-        if (isNotLogged(session)) return "redirect:/";
+        if (session.getAttribute("usuarioLogueado") == null) return "redirect:/";
+
         model.addAttribute("venta", new Ventas());
         return "form-venta";
     }
@@ -118,7 +119,8 @@ public class ViewController {
     // ================= DETALLE =================
     @GetMapping("/detalle-ventas")
     public String viewDetalles(Model model, HttpSession session) {
-        if (isNotLogged(session)) return "redirect:/";
+        if (session.getAttribute("usuarioLogueado") == null) return "redirect:/";
+
         model.addAttribute("lista", detalleService.listarUsuarios());
         return "detalle-ventas";
     }

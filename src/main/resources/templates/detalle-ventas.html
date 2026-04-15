@@ -28,11 +28,17 @@
         </thead>
         <tbody>
         <tr th:each="d : ${lista}">
+
             <td th:text="${d.codigoDetalleVenta}"></td>
+
             <td th:text="${d.venta != null ? d.venta.codigoVenta : 'N/A'}"></td>
+
             <td th:text="${d.cantidad}"></td>
-            <td th:text="'Q' + ${d.precioUnitario}"></td>
-            <td th:text="'Q' + ${d.precioTotal}"></td>
+
+            <td th:text="${d.precioUnitario}"></td>
+
+            <td th:text="${d.precioTotal}"></td>
+
         </tr>
         </tbody>
     </table>

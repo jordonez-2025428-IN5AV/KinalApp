@@ -10,15 +10,17 @@
     <h2>Nuevo Usuario</h2>
 
     <form th:action="@{/view/usuarios/guardar}" th:object="${usuario}" method="post">
+
         <input type="text" th:field="*{codigoUsuario}" placeholder="Código">
         <input type="text" th:field="*{username}" placeholder="Usuario">
-        <input type="password" th:field="*{password}" placeholder="Contraseña">
-        <input type="email" th:field="*{email}" placeholder="Email">
+        <input type="text" th:field="*{password}" placeholder="Password">
+        <input type="text" th:field="*{email}" placeholder="Email">
         <input type="text" th:field="*{rol}" placeholder="Rol">
         <input type="number" th:field="*{estado}" placeholder="Estado">
+        <input type="text" th:field="*{nombre}" placeholder="Nombre">
 
         <button type="submit">Guardar</button>
-        <a th:href="@{/view/usuarios}" class="cancel">Cancelar</a>
+
     </form>
 </div>
 

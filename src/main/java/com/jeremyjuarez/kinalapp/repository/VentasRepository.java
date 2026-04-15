@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface VentasRepository extends JpaRepository<Ventas, Integer> {
+public interface VentasRepository extends JpaRepository<Ventas, String> {
     List<Ventas> findByEstado(int estado);
 }
