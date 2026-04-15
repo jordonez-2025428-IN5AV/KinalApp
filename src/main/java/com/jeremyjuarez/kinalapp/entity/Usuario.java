@@ -20,7 +20,7 @@ public class Usuario {
     @Column
     private String rol;
     @Column
-    private int estado;
+    private Integer estado;
     @OneToMany(mappedBy = "usuario")
     private List<Ventas> ventas;
 
@@ -76,11 +76,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public int getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 }

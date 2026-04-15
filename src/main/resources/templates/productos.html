@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KinalApp | Productos</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="main-content">
+
+    <a th:href="@{/index}" class="btn-back">
+        <i class="fas fa-arrow-left"></i> Volver al Dashboard
+    </a>
+
+    <header class="page-header">
+        <h1>Inventario de Productos</h1>
+    </header>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${lista}">
+            <td th:text="${p.codigoProducto}"></td>
+            <td th:text="${p.nombreProducto}"></td>
+            <td th:text="'Q' + ${p.precio}"></td>
+            <td th:text="${p.stock}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

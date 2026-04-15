@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KinalApp | Detalle Ventas</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="main-content">
+
+    <a th:href="@{/index}" class="btn-back">
+        <i class="fas fa-arrow-left"></i> Volver al Dashboard
+    </a>
+
+    <header class="page-header">
+        <h1>Detalles de Facturación</h1>
+    </header>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Venta</th>
+            <th>Cantidad</th>
+            <th>P. Unitario</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="d : ${lista}">
+            <td th:text="${d.codigoDetalleVenta}"></td>
+            <td th:text="${d.venta != null ? d.venta.codigoVenta : 'N/A'}"></td>
+            <td th:text="${d.cantidad}"></td>
+            <td th:text="'Q' + ${d.precioUnitario}"></td>
+            <td th:text="'Q' + ${d.precioTotal}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
