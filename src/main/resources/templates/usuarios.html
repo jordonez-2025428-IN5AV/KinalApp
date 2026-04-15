@@ -2,28 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>KinalApp | Usuarios</title>
+    <title>Usuarios</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<div class="container">
-    <a th:href="@{/index}" class="btn-back">
-        <i class="fas fa-arrow-left"></i> Volver al Dashboard
-    </a>
 
+<div class="main-content">
     <header class="page-header">
-        <h1>Gestión de Usuarios</h1>
-        <p>Lista de personal con acceso al sistema</p>
+        <h1>Usuarios</h1>
+        <div>
+            <a th:href="@{/view/usuarios/nuevo}" class="btn">Agregar</a>
+            <a th:href="@{/index}" class="btn-logout">Dashboard</a>
+        </div>
     </header>
 
     <table>
         <thead>
         <tr>
             <th>Código</th>
-            <th>Nombre de Usuario</th>
+            <th>Usuario</th>
             <th>Email</th>
-            <th>Rol / Cargo</th>
+            <th>Rol</th>
             <th>Estado</th>
         </tr>
         </thead>
@@ -33,14 +32,11 @@
             <td th:text="${u.username}"></td>
             <td th:text="${u.email}"></td>
             <td th:text="${u.rol}"></td>
-            <td>
-                        <span th:class="${u.estado == 1 ? 'badge badge-active' : 'badge badge-inactive'}"
-                              th:text="${u.estado == 1 ? 'Activo' : 'Inactivo'}">
-                        </span>
-            </td>
+            <td th:text="${u.estado == 1 ? 'Activo' : 'Inactivo'}"></td>
         </tr>
         </tbody>
     </table>
 </div>
+
 </body>
 </html>
