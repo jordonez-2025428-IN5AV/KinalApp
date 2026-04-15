@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cliente</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Nuevo Cliente</h2>
+
+    <form th:action="@{/view/clientes/guardar}" th:object="${cliente}" method="post">
+        <input type="text" th:field="*{DPICliente}" placeholder="DPI">
+        <input type="text" th:field="*{nombreCliente}" placeholder="Nombre">
+        <input type="text" th:field="*{apellidoCliente}" placeholder="Apellido">
+        <input type="text" th:field="*{direccionCliente}" placeholder="Dirección">
+        <input type="number" th:field="*{estado}" placeholder="Estado">
+
+        <button type="submit">Guardar</button>
+        <a th:href="@{/view/clientes}" class="cancel">Cancelar</a>
+    </form>
+</div>
+
+</body>
+</html>

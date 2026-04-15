@@ -1,17 +1,16 @@
 package com.jeremyjuarez.kinalapp.controller;
 
+import com.jeremyjuarez.kinalapp.entity.*;
 import com.jeremyjuarez.kinalapp.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/view")
 public class ViewController {
 
-    // Inyectamos todos los servicios necesarios
     private final IUsuarioService usuarioService;
     private final IProductosService productoService;
     private final IClienteService clienteService;
@@ -28,18 +27,32 @@ public class ViewController {
         this.detalleService = detalleService;
     }
 
-    // Middleware manual para validar sesión
     private boolean isNotLogged(HttpSession session) {
         return session.getAttribute("usuarioLogueado") == null;
     }
 
+    // ================= USUARIOS =================
     @GetMapping("/usuarios")
     public String viewUsuarios(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
         model.addAttribute("lista", usuarioService.listarUsuarios());
-        return "usuarios"; // Busca templates/usuarios.html
+        return "usuarios";
     }
 
+    @GetMapping("/usuarios/nuevo")
+    public String nuevoUsuario(Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+        model.addAttribute("usuario", new Usuario());
+        return "form-usuario";
+    }
+
+    @PostMapping("/usuarios/guardar")
+    public String guardarUsuario(@ModelAttribute Usuario usuario) {
+        usuarioService.guardar(usuario);
+        return "redirect:/view/usuarios";
+    }
+
+    // ================= PRODUCTOS =================
     @GetMapping("/productos")
     public String viewProductos(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -47,6 +60,20 @@ public class ViewController {
         return "productos";
     }
 
+    @GetMapping("/productos/nuevo")
+    public String nuevoProducto(Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+        model.addAttribute("producto", new Productos());
+        return "form-producto";
+    }
+
+    @PostMapping("/productos/guardar")
+    public String guardarProducto(@ModelAttribute Productos producto) {
+        productoService.guardar(producto);
+        return "redirect:/view/productos";
+    }
+
+    // ================= CLIENTES =================
     @GetMapping("/clientes")
     public String viewClientes(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -54,6 +81,20 @@ public class ViewController {
         return "clientes";
     }
 
+    @GetMapping("/clientes/nuevo")
+    public String nuevoCliente(Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+        model.addAttribute("cliente", new Cliente());
+        return "form-cliente";
+    }
+
+    @PostMapping("/clientes/guardar")
+    public String guardarCliente(@ModelAttribute Cliente cliente) {
+        clienteService.guardar(cliente);
+        return "redirect:/view/clientes";
+    }
+
+    // ================= VENTAS =================
     @GetMapping("/ventas")
     public String viewVentas(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -61,10 +102,39 @@ public class ViewController {
         return "ventas";
     }
 
+    @GetMapping("/ventas/nuevo")
+    public String nuevaVenta(Model model, HttpSession session) {
+        if (session.getAttribute("usuarioLogueado") == null) return "redirect:/";
+
+        model.addAttribute("venta", new Ventas());
+        return "form-venta";
+    }
+
+    @PostMapping("/ventas/guardar")
+    public String guardarVenta(@ModelAttribute Ventas venta) {
+        ventaService.guardar(venta);
+        return "redirect:/view/ventas";
+    }
+
+    // ================= DETALLE =================
     @GetMapping("/detalle-ventas")
     public String viewDetalles(Model model, HttpSession session) {
-        if (isNotLogged(session)) return "redirect:/";
+        if (session.getAttribute("usuarioLogueado") == null) return "redirect:/";
+
         model.addAttribute("lista", detalleService.listarUsuarios());
         return "detalle-ventas";
+    }
+
+    @GetMapping("/detalle-ventas/nuevo")
+    public String nuevoDetalle(Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+        model.addAttribute("detalle", new DetalleVenta());
+        return "form-detalle";
+    }
+
+    @PostMapping("/detalle-ventas/guardar")
+    public String guardarDetalle(@ModelAttribute DetalleVenta detalle) {
+        detalleService.guardar(detalle);
+        return "redirect:/view/detalle-ventas";
     }
 }

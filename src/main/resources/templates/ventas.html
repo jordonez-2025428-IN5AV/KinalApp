@@ -2,28 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>KinalApp | Ventas</title>
+    <title>Ventas</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
 <div class="main-content">
-
-    <a th:href="@{/index}" class="btn-back">
-        <i class="fas fa-arrow-left"></i> Volver al Dashboard
-    </a>
-
     <header class="page-header">
-        <h1>Registro de Ventas</h1>
+        <h1>Ventas</h1>
+        <div>
+            <a th:href="@{/view/ventas/nuevo}" class="btn">Agregar</a>
+            <a th:href="@{/index}" class="btn-logout">Dashboard</a>
+        </div>
     </header>
 
     <table>
         <thead>
         <tr>
-            <th>Factura</th>
+            <th>Código</th>
             <th>Fecha</th>
             <th>Cliente</th>
-            <th>Vendedor</th>
+            <th>Usuario</th>
             <th>Total</th>
         </tr>
         </thead>
@@ -37,7 +36,7 @@
         </tr>
         </tbody>
     </table>
-
 </div>
+
 </body>
 </html>

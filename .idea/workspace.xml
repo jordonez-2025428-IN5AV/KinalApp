@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadb6acd-ecf6-48a1-bcdd-b0faf54a7942" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ProductosController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/ProductosService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/clientes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/detalle-ventas.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/usuarios.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/ventas.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/form-venta.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ProductoViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/Ventas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/Ventas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/repository/VentasRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/repository/VentasRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/VentasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/VentasService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detalle-ventas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detalle-ventas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-usuario.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

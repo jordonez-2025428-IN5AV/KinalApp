@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle Venta</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Nuevo Detalle</h2>
+
+    <form th:action="@{/view/detalle-ventas/guardar}" th:object="${detalle}" method="post">
+        <input type="text" th:field="*{codigoDetalleVenta}" placeholder="Código">
+        <input type="number" th:field="*{cantidad}" placeholder="Cantidad">
+        <input type="number" th:field="*{precioUnitario}" placeholder="Precio Unitario">
+        <input type="number" th:field="*{precioTotal}" placeholder="Total">
+
+        <button type="submit">Guardar</button>
+        <a th:href="@{/view/detalle-ventas}" class="cancel">Cancelar</a>
+    </form>
+</div>
+
+</body>
+</html>

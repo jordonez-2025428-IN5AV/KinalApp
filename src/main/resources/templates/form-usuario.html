@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Nuevo Usuario</h2>
+
+    <form th:action="@{/view/usuarios/guardar}" th:object="${usuario}" method="post">
+
+        <input type="text" th:field="*{codigoUsuario}" placeholder="Código">
+        <input type="text" th:field="*{username}" placeholder="Usuario">
+        <input type="text" th:field="*{password}" placeholder="Password">
+        <input type="text" th:field="*{email}" placeholder="Email">
+        <input type="text" th:field="*{rol}" placeholder="Rol">
+        <input type="number" th:field="*{estado}" placeholder="Estado">
+        <input type="text" th:field="*{nombre}" placeholder="Nombre">
+
+        <button type="submit">Guardar</button>
+
+    </form>
+</div>
+
+</body>
+</html>
