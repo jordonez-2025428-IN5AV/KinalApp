@@ -26,7 +26,7 @@ public class Ventas {
     @JoinColumn(name = "Usuarios_codigo_usuario")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", fetch = FetchType.LAZY)
     private List<DetalleVenta> detalles;
 
     public Ventas() {

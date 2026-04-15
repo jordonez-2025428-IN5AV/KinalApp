@@ -6,13 +6,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IVentasService {
-    List<Ventas> listarUsuarios();
+
+    List<Ventas> listarVentas();
+
     List<Ventas> listarActivos();
 
-    Ventas guardar(Ventas ventas);
+    Optional<Ventas> buscarPorCodigo(String codigoVenta);
 
-    Optional<Ventas> buscarPorCodigoV(String codigoVenta);
-    Ventas actualizar(String codigoVenta, Ventas ventas);
+    Ventas guardar(Ventas venta);
+
+    Ventas actualizar(String codigoVenta, Ventas venta);
+
     void eliminar(String codigoVenta);
-    boolean existePorCodigoV(String codigoVenta);
+
+    boolean existePorCodigo(String codigoVenta);
 }

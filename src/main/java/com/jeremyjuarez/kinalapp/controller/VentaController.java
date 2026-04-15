@@ -21,13 +21,13 @@ public class VentaController {
 
     @GetMapping
     public ResponseEntity<List<Ventas>> listar(){
-        List<Ventas> usuario = ventasService.listarUsuarios();
+        List<Ventas> usuario = ventasService.listarVentas();
         return ResponseEntity.ok(usuario);
     }
 
     @GetMapping("/{codigo}")
     public ResponseEntity<Ventas> buscarPorDPI(@PathVariable String codigo){
-        return ventasService.buscarPorCodigoV(codigo).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return ventasService.buscarPorCodigo(codigo).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -43,7 +43,7 @@ public class VentaController {
     @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> eliminar(@PathVariable String codigo){
         try {
-            if (!ventasService.existePorCodigoV(codigo)){
+            if (!ventasService.existePorCodigo(codigo)){
                 return ResponseEntity.notFound().build();
             }
             ventasService.eliminar(codigo);
@@ -56,7 +56,7 @@ public class VentaController {
     @PutMapping("/{codigo}")
     public ResponseEntity<?> actualizar(@PathVariable String codigo, @RequestBody Ventas usuario){
         try {
-            if (!ventasService.existePorCodigoV(codigo)){
+            if (!ventasService.existePorCodigo(codigo)){
                 return ResponseEntity.notFound().build();
             }
             Ventas usuarioActualizado = ventasService.actualizar(codigo, usuario);
