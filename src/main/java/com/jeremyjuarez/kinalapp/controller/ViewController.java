@@ -98,14 +98,14 @@ public class ViewController {
     @GetMapping("/ventas")
     public String viewVentas(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
-        model.addAttribute("lista", ventaService.listarUsuarios());
+
+        model.addAttribute("lista", ventaService.listarVentas());
         return "ventas";
     }
 
     @GetMapping("/ventas/nuevo")
     public String nuevaVenta(Model model, HttpSession session) {
-        if (session.getAttribute("usuarioLogueado") == null) return "redirect:/";
-
+        if (isNotLogged(session)) return "redirect:/";
         model.addAttribute("venta", new Ventas());
         return "form-venta";
     }
@@ -119,9 +119,9 @@ public class ViewController {
     // ================= DETALLE =================
     @GetMapping("/detalle-ventas")
     public String viewDetalles(Model model, HttpSession session) {
-        if (session.getAttribute("usuarioLogueado") == null) return "redirect:/";
+        if (isNotLogged(session)) return "redirect:/";
 
-        model.addAttribute("lista", detalleService.listarUsuarios());
+        model.addAttribute("lista", detalleService.listarDetalles());
         return "detalle-ventas";
     }
 

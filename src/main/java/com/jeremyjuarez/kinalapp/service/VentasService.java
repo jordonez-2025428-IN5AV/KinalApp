@@ -18,7 +18,7 @@ public class VentasService implements IVentasService {
     }
 
     @Override
-    public List<Ventas> listarUsuarios() {
+    public List<Ventas> listarVentas() {
         return ventasRepository.findAll();
     }
 
@@ -28,59 +28,58 @@ public class VentasService implements IVentasService {
     }
 
     @Override
-    public Ventas guardar(Ventas ventas) {
-        validarVentas(ventas);
-
-        if (ventas.getEstado() == 0) {
-            ventas.setEstado(1);
-        }
-
-        return ventasRepository.save(ventas);
+    public Optional<Ventas> buscarPorCodigo(String codigoVenta) {
+        return ventasRepository.findById(String.valueOf(Integer.parseInt(codigoVenta)));
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Optional<Ventas> buscarPorCodigoV(String codigoVenta) {
-        return ventasRepository.findById(codigoVenta);
+    public Ventas guardar(Ventas venta) {
+        validar(venta);
+
+        if (venta.getEstado() == 0) {
+            venta.setEstado(1);
+        }
+
+        return ventasRepository.save(venta);
     }
 
     @Override
-    public Ventas actualizar(String codigoVenta, Ventas ventas) {
+    public Ventas actualizar(String codigoVenta, Ventas venta) {
+        Integer id = Integer.parseInt(codigoVenta);
 
-        if (!ventasRepository.existsById(codigoVenta)) {
-            throw new RuntimeException("No se encontró la venta con código: " + codigoVenta);
+        if (!ventasRepository.existsById(String.valueOf(id))) {
+            throw new RuntimeException("Venta no encontrada: " + codigoVenta);
         }
 
-        ventas.setCodigoVenta(codigoVenta);
-        validarVentas(ventas);
+        venta.setCodigoVenta(codigoVenta);
+        validar(venta);
 
-        return ventasRepository.save(ventas);
+        return ventasRepository.save(venta);
     }
 
     @Override
     public void eliminar(String codigoVenta) {
+        Integer id = Integer.parseInt(codigoVenta);
 
-        if (!ventasRepository.existsById(codigoVenta)) {
-            throw new RuntimeException("No se encontró la venta con código: " + codigoVenta);
+        if (!ventasRepository.existsById(String.valueOf(id))) {
+            throw new RuntimeException("Venta no encontrada: " + codigoVenta);
         }
 
-        ventasRepository.deleteById(codigoVenta);
+        ventasRepository.deleteById(String.valueOf(id));
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public boolean existePorCodigoV(String codigoVenta) {
-        return ventasRepository.existsById(codigoVenta);
+    public boolean existePorCodigo(String codigoVenta) {
+        return ventasRepository.existsById(String.valueOf(Integer.parseInt(codigoVenta)));
     }
 
-    private void validarVentas(Ventas ventas) {
-
-        if (ventas.getCodigoVenta() == null || ventas.getCodigoVenta().isBlank()) {
-            throw new IllegalArgumentException("El código de venta no puede ser nulo o vacío");
+    private void validar(Ventas venta) {
+        if (venta.getCodigoVenta() == null) {
+            throw new IllegalArgumentException("Código de venta obligatorio");
         }
 
-        if (ventas.getPrecioVenta() <= 0) {
-            throw new IllegalArgumentException("El precio de venta debe ser mayor a 0");
+        if (venta.getPrecioVenta() <= 0) {
+            throw new IllegalArgumentException("Precio inválido");
         }
     }
 }

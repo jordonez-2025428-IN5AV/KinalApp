@@ -22,8 +22,8 @@ public class DetalleVenta {
     @JoinColumn(name = "Productos_codigo_producto")
     private Productos producto;
 
-    @ManyToOne
-    @JoinColumn(name = "Ventas_codigo_venta")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ventas_codigo_venta")
     private Ventas venta;
 
     public DetalleVenta() {

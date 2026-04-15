@@ -19,59 +19,53 @@ public class DetalleVentaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DetalleVenta>> listar(){
-        List<DetalleVenta> usuario = detalleVentaService.listarUsuarios();
-        return ResponseEntity.ok(usuario);
+    public ResponseEntity<List<DetalleVenta>> listar() {
+        return ResponseEntity.ok(detalleVentaService.listarDetalles());
     }
 
     @GetMapping("/buscar/{codigo}")
-    public ResponseEntity<DetalleVenta> buscarPorDPI(@PathVariable String codigo){
-        return detalleVentaService.buscarPorCodigoDV(codigo)
+    public ResponseEntity<DetalleVenta> buscarPorId(@PathVariable Integer codigo) {
+        return detalleVentaService.buscarPorId(codigo)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<?> guardar(@RequestBody DetalleVenta detalleVenta ){
+    public ResponseEntity<?> guardar(@RequestBody DetalleVenta detalleVenta) {
         try {
-            DetalleVenta nuevoDetalle = detalleVentaService.guardar(detalleVenta);
-            return new ResponseEntity<>(nuevoDetalle, HttpStatus.CREATED);
+            return new ResponseEntity<>(
+                    detalleVentaService.guardar(detalleVenta),
+                    HttpStatus.CREATED
+            );
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @DeleteMapping("/{codigo}")
-    public ResponseEntity<Void> eliminar(@PathVariable String codigo){
-        try {
-            if (!detalleVentaService.existerPorCodigo(codigo)){
-                return ResponseEntity.notFound().build();
-            }
-            detalleVentaService.eliminar(codigo);
-            return ResponseEntity.noContent().build();
-        } catch (RuntimeException e) {
+    public ResponseEntity<Void> eliminar(@PathVariable Integer codigo) {
+        if (detalleVentaService.buscarPorId(codigo).isEmpty()) {
             return ResponseEntity.notFound().build();
         }
+
+        detalleVentaService.eliminar(codigo);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{codigo}")
-    public ResponseEntity<?> actualizar(@PathVariable String codigo, @RequestBody DetalleVenta detalleVenta){
-        try {
-            if (!detalleVentaService.existerPorCodigo(codigo)){
-                return ResponseEntity.notFound().build();
-            }
-            DetalleVenta usuarioActualizado = detalleVentaService.actualizar(codigo, detalleVenta);
-            return ResponseEntity.ok(usuarioActualizado);
-        } catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (RuntimeException e) {
-            return  ResponseEntity.notFound().build();
+    public ResponseEntity<?> actualizar(@PathVariable Integer codigo,
+                                        @RequestBody DetalleVenta detalleVenta) {
+
+        if (detalleVentaService.buscarPorId(codigo).isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
+
+        detalleVenta.setCodigoDetalleVenta(String.valueOf(codigo)); // IMPORTANTE
+        return ResponseEntity.ok(detalleVentaService.guardar(detalleVenta));
     }
 
     @GetMapping("/activos")
-    public ResponseEntity<List<DetalleVenta>> listarActivos(){
-        List<DetalleVenta> UsuariosA = detalleVentaService.listarActivos();
-        return ResponseEntity.ok(UsuariosA);
+    public ResponseEntity<List<DetalleVenta>> listarActivos() {
+        return ResponseEntity.ok(detalleVentaService.listarDetalles());
     }
 }
