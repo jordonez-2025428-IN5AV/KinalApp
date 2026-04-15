@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>KinalApp | Productos</title>
+    <title>KinalApp | Clientes</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -14,24 +14,26 @@
     </a>
 
     <header class="page-header">
-        <h1>Inventario de Productos</h1>
+        <h1>Directorio de Clientes</h1>
     </header>
 
     <table>
         <thead>
         <tr>
-            <th>Código</th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Stock</th>
+            <th>DPI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dirección</th>
+            <th>Estado</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${lista}">
-            <td th:text="${p.codigoProducto}"></td>
-            <td th:text="${p.nombreProducto}"></td>
-            <td th:text="'Q' + ${p.precio}"></td>
-            <td th:text="${p.stock}"></td>
+        <tr th:each="c : ${lista}">
+            <td th:text="${c.DPICliente}"></td>
+            <td th:text="${c.nombreCliente}"></td>
+            <td th:text="${c.apellidoCliente}"></td>
+            <td th:text="${c.direccionCliente}"></td>
+            <td th:text="${c.estado == 1 ? 'Activo' : 'Inactivo'}"></td>
         </tr>
         </tbody>
     </table>

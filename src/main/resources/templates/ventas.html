@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>KinalApp | Productos</title>
+    <title>KinalApp | Ventas</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -14,24 +14,26 @@
     </a>
 
     <header class="page-header">
-        <h1>Inventario de Productos</h1>
+        <h1>Registro de Ventas</h1>
     </header>
 
     <table>
         <thead>
         <tr>
-            <th>Código</th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Stock</th>
+            <th>Factura</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Total</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${lista}">
-            <td th:text="${p.codigoProducto}"></td>
-            <td th:text="${p.nombreProducto}"></td>
-            <td th:text="'Q' + ${p.precio}"></td>
-            <td th:text="${p.stock}"></td>
+        <tr th:each="v : ${lista}">
+            <td th:text="${v.codigoVenta}"></td>
+            <td th:text="${v.fechaVenta}"></td>
+            <td th:text="${v.cliente != null ? v.cliente.nombreCliente : 'N/A'}"></td>
+            <td th:text="${v.usuario != null ? v.usuario.username : 'N/A'}"></td>
+            <td th:text="'Q' + ${v.precioVenta}"></td>
         </tr>
         </tbody>
     </table>
