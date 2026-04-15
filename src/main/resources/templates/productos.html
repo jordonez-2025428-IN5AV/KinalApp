@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario | KinalApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --p: #6366f1; --bg: #f8fafc; --txt: #1e293b; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); padding: 40px; color: var(--txt); }
+        .card-table { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 12px; border-bottom: 2px solid var(--p); color: var(--p); }
+        td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .btn-add { background: var(--p); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
+        .btn-add:hover { opacity: 0.9; }
+        .action-icons a { margin: 0 5px; color: #64748b; text-decoration: none; }
+        .action-icons a:hover { color: var(--p); }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1><i class="fas fa-boxes"></i> Inventario de Productos</h1>
+    <a href="#" class="btn-add"><i class="fas fa-plus"></i> Nuevo Producto</a>
+</div>
+
+<div class="card-table">
+    <table>
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prod : ${listaProductos}">
+            <td th:text="${prod.codigoP}"></td> <td th:text="${prod.nombreP}"></td>
+            <td th:text="${prod.descripcionP}"></td>
+            <td th:text="${'Q' + prod.precioP}"></td>
+            <td th:text="${prod.stockP}"></td>
+            <td class="action-icons">
+                <a href="#"><i class="fas fa-edit"></i></a>
+                <a href="#" style="color: #ef4444;"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

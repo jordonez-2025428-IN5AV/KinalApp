@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestión | Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        :root { --p: #6366f1; --s: #3b82f6; --bg: #f8fafc; --txt: #1e293b; }
+        body { background: var(--bg); font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 90%; max-width: 1000px; text-align: center; }
+        h1 { color: var(--p); font-size: 2.5rem; margin-bottom: 3rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .card { background: white; padding: 2rem; border-radius: 16px; text-decoration: none; color: var(--txt); transition: 0.3s; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .card:hover { transform: translateY(-5px); border-color: var(--p); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2); }
+        .card i { font-size: 2.5rem; color: var(--s); margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Panel de Administración</h1>
+    <div class="grid">
+        <a th:href="@{/clientes}" class="card"><i class="fas fa-users"></i><h3>Clientes</h3><p>Gestión de cartera</p></a>
+        <a th:href="@{/view/productos}" class="card">
+            <div class="icon-box"><i class="fas fa-box"></i></div>
+            <h3>Productos</h3>
+            <p>Control de inventario</p>
+        </a>        <a th:href="@{/ventas}" class="card"><i class="fas fa-shopping-cart"></i><h3>Ventas</h3><p>Nueva transacción</p></a>
+        <a th:href="@{/usuarios}" class="card"><i class="fas fa-user-shield"></i><h3>Usuarios</h3><p>Accesos y roles</p></a>
+    </div>
+</div>
+</body>
+</html>
