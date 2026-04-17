@@ -8,30 +8,22 @@
 <body>
 
 <div class="form-container">
-
-    <h2 th:text="${usuario.codigoUsuario == null ? 'Nuevo Usuario' : 'Editar Usuario'}"></h2>
+    <h2>Registro de Usuario</h2>
 
     <form th:action="@{/view/usuarios/guardar}" th:object="${usuario}" method="post">
+        <input type="text" th:field="*{codigoUsuario}" placeholder="Código de empleado">
+        <input type="text" th:field="*{nombre}" placeholder="Nombre Completo">
+        <input type="text" th:field="*{username}" placeholder="Nombre de usuario">
+        <input type="email" th:field="*{email}" placeholder="Correo electrónico">
+        <input type="password" th:field="*{password}" placeholder="Definir contraseña">
+        <input type="text" th:field="*{rol}" placeholder="Asignar Rol">
 
-        <input type="text" th:field="*{codigoUsuario}" placeholder="Código" required>
+        <label>Estado Inicial:</label>
+        <input type="number" th:field="*{estado}" placeholder="1 para Activo, 0 para Inactivo">
 
-        <input type="text" th:field="*{username}" placeholder="Usuario" required>
-
-        <input type="email" th:field="*{email}" placeholder="Email" required>
-
-        <input type="password" th:field="*{password}" placeholder="Contraseña" required>
-
-        <input type="text" th:field="*{rol}" placeholder="Rol">
-
-        <select th:field="*{estado}">
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
-        </select>
-
-        <button type="submit">Guardar</button>
-
+        <button type="submit" class="btn-search" style="width: 100%; margin-top: 10px;">Registrar Usuario</button>
+        <a th:href="@{/view/usuarios}" class="cancel">Volver al listado</a>
     </form>
-
 </div>
 
 </body>

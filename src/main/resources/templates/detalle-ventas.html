@@ -8,16 +8,19 @@
 <body>
 
 <div class="main-content">
-
     <header class="page-header">
         <h1>Detalle Ventas</h1>
-
         <div>
             <a th:href="@{/view/detalle-ventas/nuevo}" class="btn">Agregar</a>
             <a th:href="@{/view/ventas}" class="btn-logout">Ventas</a>
             <a th:href="@{/index}" class="btn-logout">Dashboard</a>
         </div>
     </header>
+
+    <div class="search-container">
+        <input type="text" class="input-search" placeholder="Buscar por código de detalle...">
+        <button class="btn-search">Buscar</button>
+    </div>
 
     <table>
         <thead>
@@ -27,25 +30,23 @@
             <th>Cantidad</th>
             <th>Precio Unitario</th>
             <th>Total</th>
+            <th>Acciones</th>
         </tr>
         </thead>
-
         <tbody>
         <tr th:each="d : ${lista}">
             <td th:text="${d.codigoDetalleVenta}"></td>
-
-            <!-- FIX CRÍTICO -->
             <td th:text="${d.venta != null ? d.venta.codigoVenta : 'N/A'}"></td>
-
             <td th:text="${d.cantidad}"></td>
-
             <td th:text="${'Q' + d.precioUnitario}"></td>
-
             <td th:text="${'Q' + d.precioTotal}"></td>
+            <td class="action-buttons">
+                <a th:href="@{/view/detalle-ventas/editar/{id}(id=${d.codigoDetalleVenta})}" class="btn-edit">Editar</a>
+                <a th:href="@{/view/detalle-ventas/eliminar/{id}(id=${d.codigoDetalleVenta})}" class="btn-delete" onclick="return confirm('¿Eliminar detalle?')">Eliminar</a>
+            </td>
         </tr>
         </tbody>
     </table>
-
 </div>
 
 </body>
