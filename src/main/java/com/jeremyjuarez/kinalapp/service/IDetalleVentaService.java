@@ -1,17 +1,17 @@
-package com.jeremyjuarez.kinalapp.service;
+    package com.jeremyjuarez.kinalapp.service;
 
-import com.jeremyjuarez.kinalapp.entity.DetalleVenta;
+    import com.jeremyjuarez.kinalapp.entity.DetalleVenta;
 
-import java.util.List;
-import java.util.Optional;
+    import java.util.List;
+    import java.util.Optional;
 
-public interface IDetalleVentaService {
+    public interface IDetalleVentaService {
 
-    List<DetalleVenta> listarDetalles();
+        List<DetalleVenta> listarDetalles();
 
-    Optional<DetalleVenta> buscarPorId(Integer id);
+        Optional<DetalleVenta> buscarPorId(String id);
 
-    DetalleVenta guardar(DetalleVenta detalle);
+        DetalleVenta guardar(DetalleVenta detalle);
 
-    void eliminar(Integer id);
-}
+        void eliminar(String id);
+    }

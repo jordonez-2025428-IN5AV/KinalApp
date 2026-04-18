@@ -31,7 +31,6 @@ public class ViewController {
         return session.getAttribute("usuarioLogueado") == null;
     }
 
-    // ================= USUARIOS =================
     @GetMapping("/usuarios")
     public String viewUsuarios(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -46,13 +45,48 @@ public class ViewController {
         return "form-usuario";
     }
 
+    // EDITAR
+    @GetMapping("/usuarios/editar/{id}")
+    public String editarUsuario(@PathVariable String id, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        Usuario usuario = usuarioService.buscarPorCodigo(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        model.addAttribute("usuario", usuario);
+        return "form-usuario";
+    }
+
+    // GUARDAR
     @PostMapping("/usuarios/guardar")
     public String guardarUsuario(@ModelAttribute Usuario usuario) {
         usuarioService.guardar(usuario);
         return "redirect:/view/usuarios";
     }
 
-    // ================= PRODUCTOS =================
+    // ELIMINAR
+    @GetMapping("/usuarios/eliminar/{id}")
+    public String eliminarUsuario(@PathVariable String id, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        usuarioService.eliminar(id);
+        return "redirect:/view/usuarios";
+    }
+
+    // BUSCAR
+    @GetMapping("/usuarios/buscar")
+    public String buscarUsuario(@RequestParam("q") String query, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        var lista = usuarioService.listarUsuarios().stream()
+                .filter(u -> u.getCodigoUsuario().contains(query) ||
+                        u.getUsername().toLowerCase().contains(query.toLowerCase()))
+                .toList();
+
+        model.addAttribute("lista", lista);
+        return "usuarios";
+    }
+
     @GetMapping("/productos")
     public String viewProductos(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -67,13 +101,48 @@ public class ViewController {
         return "form-producto";
     }
 
+    // EDITAR
+    @GetMapping("/productos/editar/{id}")
+    public String editarProducto(@PathVariable String id, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        Productos producto = productoService.buscarPorCodigoP(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        model.addAttribute("producto", producto);
+        return "form-producto";
+    }
+
+    // GUARDAR
     @PostMapping("/productos/guardar")
     public String guardarProducto(@ModelAttribute Productos producto) {
         productoService.guardar(producto);
         return "redirect:/view/productos";
     }
 
-    // ================= CLIENTES =================
+    // ELIMINAR
+    @GetMapping("/productos/eliminar/{id}")
+    public String eliminarProducto(@PathVariable String id, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        productoService.eliminar(id);
+        return "redirect:/view/productos";
+    }
+
+    // BUSCAR
+    @GetMapping("/productos/buscar")
+    public String buscarProducto(@RequestParam("q") String query, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        var lista = productoService.listarUsuarios().stream()
+                .filter(p -> p.getCodigoProducto().contains(query) ||
+                        p.getNombreProducto().toLowerCase().contains(query.toLowerCase()))
+                .toList();
+
+        model.addAttribute("lista", lista);
+        return "productos";
+    }
+
     @GetMapping("/clientes")
     public String viewClientes(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -138,11 +207,10 @@ public class ViewController {
         return "clientes";
     }
 
-    // ================= VENTAS =================
+
     @GetMapping("/ventas")
     public String viewVentas(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
-
         model.addAttribute("lista", ventaService.listarVentas());
         return "ventas";
     }
@@ -154,13 +222,49 @@ public class ViewController {
         return "form-venta";
     }
 
+    // EDITAR
+    @GetMapping("/ventas/editar/{id}")
+    public String editarVenta(@PathVariable String id, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        Ventas venta = ventaService.buscarPorCodigo(id)
+                .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
+
+        model.addAttribute("venta", venta);
+        return "form-venta";
+    }
+
+    // GUARDAR
     @PostMapping("/ventas/guardar")
     public String guardarVenta(@ModelAttribute Ventas venta) {
         ventaService.guardar(venta);
         return "redirect:/view/ventas";
     }
 
-    // ================= DETALLE =================
+    // ELIMINAR
+    @GetMapping("/ventas/eliminar/{id}")
+    public String eliminarVenta(@PathVariable String id, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        ventaService.eliminar(id);
+        return "redirect:/view/ventas";
+    }
+
+    // BUSCAR
+    @GetMapping("/ventas/buscar")
+    public String buscarVenta(@RequestParam("q") String query, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        var lista = ventaService.listarVentas().stream()
+                .filter(v -> v.getCodigoVenta().contains(query))
+                .toList();
+
+        model.addAttribute("lista", lista);
+        return "ventas";
+    }
+
+
+    // LISTAR
     @GetMapping("/detalle-ventas")
     public String viewDetalles(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -169,16 +273,63 @@ public class ViewController {
         return "detalle-ventas";
     }
 
+    // NUEVO
     @GetMapping("/detalle-ventas/nuevo")
     public String nuevoDetalle(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
+
         model.addAttribute("detalle", new DetalleVenta());
         return "form-detalle";
     }
 
+    // EDITAR
+    @GetMapping("/detalle-ventas/editar/{id}")
+    public String editarDetalle(@PathVariable String id, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        DetalleVenta detalle = detalleService.buscarPorId(id)
+                .orElseThrow(() -> new RuntimeException("Detalle no encontrado"));
+
+        model.addAttribute("detalle", detalle);
+        return "form-detalle";
+    }
+
+    // GUARDAR
     @PostMapping("/detalle-ventas/guardar")
     public String guardarDetalle(@ModelAttribute DetalleVenta detalle) {
         detalleService.guardar(detalle);
         return "redirect:/view/detalle-ventas";
+    }
+
+    // ELIMINAR
+    @GetMapping("/detalle-ventas/eliminar/{id}")
+    public String eliminarDetalle(@PathVariable String id, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        detalleService.eliminar(id);
+        return "redirect:/view/detalle-ventas";
+    }
+
+    // BUSCAR (por ID)
+    @GetMapping("/detalle-ventas/buscar")
+    public String buscarDetalle(@RequestParam(value = "codigo", required = false) String codigo,
+                                Model model, HttpSession session) {
+
+        if (isNotLogged(session)) return "redirect:/";
+
+        if (codigo == null || codigo.trim().isEmpty()) {
+            model.addAttribute("lista", detalleService.listarDetalles());
+            return "detalle-ventas";
+        }
+
+        var detalleOpt = detalleService.buscarPorId(codigo);
+
+        if (detalleOpt.isPresent()) {
+            model.addAttribute("lista", java.util.List.of(detalleOpt.get()));
+        } else {
+            model.addAttribute("lista", java.util.List.of());
+        }
+
+        return "detalle-ventas";
     }
 }

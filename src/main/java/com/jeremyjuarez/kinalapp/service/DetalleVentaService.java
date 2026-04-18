@@ -22,8 +22,8 @@ public class DetalleVentaService implements IDetalleVentaService {
     }
 
     @Override
-    public Optional<DetalleVenta> buscarPorId(Integer id) {
-        return detalleVentaRepository.findById(String.valueOf(id));
+    public Optional<DetalleVenta> buscarPorId(String id) {
+        return detalleVentaRepository.findById(id);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class DetalleVentaService implements IDetalleVentaService {
     }
 
     @Override
-    public void eliminar(Integer id) {
-        detalleVentaRepository.deleteById(String.valueOf(id));
+    public void eliminar(String id) {
+        detalleVentaRepository.deleteById(id);
     }
 }

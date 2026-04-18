@@ -16,10 +16,10 @@
         </div>
     </header>
 
-    <div class="search-container">
-        <input type="text" class="input-search" placeholder="Buscar por código de venta o cliente...">
-        <button class="btn-search">Buscar</button>
-    </div>
+    <form th:action="@{/view/ventas/buscar}" method="get">
+        <input type="text" name="q" class="input-search" placeholder="Buscar venta por código...">
+        <button type="submit" class="btn-search">Buscar</button>
+    </form>
 
     <table>
         <thead>
