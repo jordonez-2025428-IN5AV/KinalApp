@@ -88,10 +88,54 @@ public class ViewController {
         return "form-cliente";
     }
 
+    // EDITAR (cargar datos en el formulario)
+    @GetMapping("/clientes/editar/{id}")
+    public String editarCliente(@PathVariable("id") String dpi, Model model, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        Cliente cliente = clienteService.buscarPorDPI(dpi)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+
+        model.addAttribute("cliente", cliente);
+        return "form-cliente";
+    }
+
+    // GUARDAR (crear + actualizar)
     @PostMapping("/clientes/guardar")
     public String guardarCliente(@ModelAttribute Cliente cliente) {
         clienteService.guardar(cliente);
         return "redirect:/view/clientes";
+    }
+
+    // ELIMINAR
+    @GetMapping("/clientes/eliminar/{id}")
+    public String eliminarCliente(@PathVariable("id") String dpi, HttpSession session) {
+        if (isNotLogged(session)) return "redirect:/";
+
+        clienteService.eliminar(dpi);
+        return "redirect:/view/clientes";
+    }
+
+    @GetMapping("/clientes/buscar")
+    public String buscarCliente(@RequestParam(value = "dpi", required = false) String dpi,
+                                Model model, HttpSession session) {
+
+        if (isNotLogged(session)) return "redirect:/";
+
+        if (dpi == null || dpi.trim().isEmpty()) {
+            model.addAttribute("lista", clienteService.listarClientes());
+            return "clientes";
+        }
+
+        var clienteOpt = clienteService.buscarPorDPI(dpi);
+
+        if (clienteOpt.isPresent()) {
+            model.addAttribute("lista", java.util.List.of(clienteOpt.get()));
+        } else {
+            model.addAttribute("lista", java.util.List.of()); // lista vacía
+        }
+
+        return "clientes";
     }
 
     // ================= VENTAS =================

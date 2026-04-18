@@ -16,10 +16,11 @@
         </div>
     </header>
 
-    <div class="search-container">
-        <input type="text" class="input-search" placeholder="Buscar cliente por DPI o nombre...">
-        <button class="btn-search">Buscar</button>
-    </div>
+    <form th:action="@{/view/clientes/buscar}" method="get" class="search-container">
+        <input type="text" name="" class="input-search"
+               placeholder="Buscar cliente por DPI o nombre..." required>
+        <button type="submit" class="btn-search">Buscar</button>
+    </form>
 
     <table>
         <thead>

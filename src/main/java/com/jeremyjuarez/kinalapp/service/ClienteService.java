@@ -54,6 +54,13 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Cliente> buscar(String texto) {
+        return clienteRepository
+                .findByDPIClienteContainingIgnoreCaseOrNombreClienteContainingIgnoreCase(texto, texto);
+    }
+
+    @Override
     public Cliente guardar(Cliente cliente) {
         /*
         * Metodo guardar crea un cliente
