@@ -24,7 +24,7 @@ public class DetalleVentaController {
     }
 
     @GetMapping("/buscar/{codigo}")
-    public ResponseEntity<DetalleVenta> buscarPorId(@PathVariable Integer codigo) {
+    public ResponseEntity<DetalleVenta> buscarPorId(@PathVariable String codigo) {
         return detalleVentaService.buscarPorId(codigo)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -43,17 +43,17 @@ public class DetalleVentaController {
     }
 
     @DeleteMapping("/{codigo}")
-    public ResponseEntity<Void> eliminar(@PathVariable Integer codigo) {
+    public ResponseEntity<Void> eliminar(@PathVariable String codigo) {
         if (detalleVentaService.buscarPorId(codigo).isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        detalleVentaService.eliminar(codigo);
+        detalleVentaService.eliminar(String.valueOf(codigo));
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{codigo}")
-    public ResponseEntity<?> actualizar(@PathVariable Integer codigo,
+    public ResponseEntity<?> actualizar(@PathVariable String codigo,
                                         @RequestBody DetalleVenta detalleVenta) {
 
         if (detalleVentaService.buscarPorId(codigo).isEmpty()) {
