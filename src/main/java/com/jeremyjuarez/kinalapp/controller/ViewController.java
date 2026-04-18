@@ -138,7 +138,6 @@ public class ViewController {
         return "clientes";
     }
 
-    // ================= VENTAS =================
     @GetMapping("/ventas")
     public String viewVentas(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
