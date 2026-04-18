@@ -16,10 +16,9 @@
         </div>
     </header>
 
-    <form th:action="@{/view/clientes/buscar}" method="get" class="search-container">
-        <input type="text" name="" class="input-search"
-               placeholder="Buscar cliente por DPI o nombre..." required>
-        <button type="submit" class="btn-search">Buscar</button>
+    <form th:action="@{/view/clientes/buscar}" method="get">
+        <input type="text" name="dpi" placeholder="Buscar por DPI">
+        <button type="submit">Buscar</button>
     </form>
 
     <table>
