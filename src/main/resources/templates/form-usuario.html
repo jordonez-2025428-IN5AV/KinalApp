@@ -6,22 +6,37 @@
 </head>
 <body>
 
-<div class="form-container">
-    <h2>Nuevo Usuario</h2>
+<div class="main-content">
+    <div class="form-container">
+        <h2 th:text="${usuario.codigoUsuario == null ? 'Nuevo Usuario' : 'Editar Usuario'}"></h2>
 
-    <form th:action="@{/view/usuarios/guardar}" th:object="${usuario}" method="post">
+        <form th:action="@{/view/usuarios/guardar}" th:object="${usuario}" method="post">
+            <label>Código de Usuario</label>
+            <input type="text" th:field="*{codigoUsuario}" placeholder="Código" required
+                   th:readonly="${usuario.codigoUsuario != null}">
 
-        <input type="text" th:field="*{codigoUsuario}" placeholder="Código">
-        <input type="text" th:field="*{username}" placeholder="Usuario">
-        <input type="text" th:field="*{password}" placeholder="Password">
-        <input type="text" th:field="*{email}" placeholder="Email">
-        <input type="text" th:field="*{rol}" placeholder="Rol">
-        <input type="number" th:field="*{estado}" placeholder="Estado">
-        <input type="text" th:field="*{nombre}" placeholder="Nombre">
+            <label>Nombre de Usuario</label>
+            <input type="text" th:field="*{username}" placeholder="Username" required>
 
-        <button type="submit">Guardar</button>
+            <label>Correo Electrónico</label>
+            <input type="email" th:field="*{email}" placeholder="Email" required>
 
-    </form>
+            <label>Contraseña</label>
+            <input type="password" th:field="*{password}" placeholder="Contraseña" required>
+
+            <label>Rol del Sistema</label>
+            <input type="text" th:field="*{rol}" placeholder="Ej: ADMIN, CAJERO">
+
+            <label>Estado de Cuenta</label>
+            <select th:field="*{estado}">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+
+            <button type="submit" class="btn-search" style="width: 100%;">Confirmar Datos</button>
+            <a th:href="@{/view/usuarios}" class="cancel">Cancelar cambios</a>
+        </form>
+    </div>
 </div>
 
 </body>

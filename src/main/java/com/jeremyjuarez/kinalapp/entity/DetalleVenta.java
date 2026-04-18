@@ -69,4 +69,20 @@ public class DetalleVenta {
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
     }
+
+    public Ventas getVenta() {
+        return venta;
+    }
+
+    public void setVenta(Ventas venta) {
+        this.venta = venta;
+    }
+
+    public Productos getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Productos producto) {
+        this.producto = producto;
+    }
 }

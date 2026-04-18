@@ -7,16 +7,25 @@
 <body>
 
 <div class="form-container">
-    <h2>Nuevo Detalle</h2>
+    <header class="page-header">
+        <h2>Nuevo Detalle de Producto</h2>
+    </header>
 
     <form th:action="@{/view/detalle-ventas/guardar}" th:object="${detalle}" method="post">
+        <label>Código de Detalle</label>
         <input type="text" th:field="*{codigoDetalleVenta}" placeholder="Código">
-        <input type="number" th:field="*{cantidad}" placeholder="Cantidad">
-        <input type="number" th:field="*{precioUnitario}" placeholder="Precio Unitario">
-        <input type="number" th:field="*{precioTotal}" placeholder="Total">
 
-        <button type="submit">Guardar</button>
-        <a th:href="@{/view/detalle-ventas}" class="cancel">Cancelar</a>
+        <label>Cantidad</label>
+        <input type="number" th:field="*{cantidad}" placeholder="0">
+
+        <label>Precio Unitario (Q)</label>
+        <input type="number" step="0.01" th:field="*{precioUnitario}" placeholder="0.00">
+
+        <label>Precio Total (Q)</label>
+        <input type="number" step="0.01" th:field="*{precioTotal}" placeholder="0.00">
+
+        <button type="submit" class="btn-search" style="width: 100%;">Guardar Detalle</button>
+        <a th:href="@{/view/detalle-ventas}" class="cancel">← Regresar a Detalles</a>
     </form>
 </div>
 

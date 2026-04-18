@@ -16,6 +16,11 @@
         </div>
     </header>
 
+    <div class="search-container">
+        <input type="text" class="input-search" placeholder="Buscar por código de venta o cliente...">
+        <button class="btn-search">Buscar</button>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -24,6 +29,7 @@
             <th>Cliente</th>
             <th>Usuario</th>
             <th>Total</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -33,10 +39,13 @@
             <td th:text="${v.cliente != null ? v.cliente.nombreCliente : 'N/A'}"></td>
             <td th:text="${v.usuario != null ? v.usuario.username : 'N/A'}"></td>
             <td th:text="'Q' + ${v.precioVenta}"></td>
+            <td class="action-buttons">
+                <a th:href="@{/view/ventas/editar/{id}(id=${v.codigoVenta})}" class="btn-edit">Editar</a>
+                <a th:href="@{/view/ventas/eliminar/{id}(id=${v.codigoVenta})}" class="btn-delete" onclick="return confirm('¿Anular venta?')">Eliminar</a>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>

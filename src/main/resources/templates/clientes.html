@@ -16,6 +16,11 @@
         </div>
     </header>
 
+    <div class="search-container">
+        <input type="text" class="input-search" placeholder="Buscar cliente por DPI o nombre...">
+        <button class="btn-search">Buscar</button>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -24,7 +29,7 @@
             <th>Apellido</th>
             <th>Dirección</th>
             <th>Estado</th>
-        </tr>
+            <th>Acciones</th> </tr>
         </thead>
         <tbody>
         <tr th:each="c : ${lista}">
@@ -32,7 +37,15 @@
             <td th:text="${c.nombreCliente}"></td>
             <td th:text="${c.apellidoCliente}"></td>
             <td th:text="${c.direccionCliente}"></td>
-            <td th:text="${c.estado == 1 ? 'Activo' : 'Inactivo'}"></td>
+            <td>
+                <span th:class="${c.estado == 1 ? 'badge badge-active' : 'badge badge-inactive'}"
+                      th:text="${c.estado == 1 ? 'Activo' : 'Inactivo'}"></span>
+            </td>
+            <td class="action-buttons">
+                <a th:href="@{/view/clientes/editar/{id}(id=${c.DPICliente})}" class="btn-edit">Editar</a>
+                <a th:href="@{/view/clientes/eliminar/{id}(id=${c.DPICliente})}"
+                   class="btn-delete" onclick="return confirm('¿Eliminar este cliente?')">Eliminar</a>
+            </td>
         </tr>
         </tbody>
     </table>

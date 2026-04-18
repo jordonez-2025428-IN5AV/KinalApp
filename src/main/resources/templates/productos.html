@@ -16,6 +16,11 @@
         </div>
     </header>
 
+    <div class="search-container">
+        <input type="text" class="input-search" placeholder="Buscar producto...">
+        <button class="btn-search">Buscar</button>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -23,6 +28,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -31,6 +37,10 @@
             <td th:text="${p.nombreProducto}"></td>
             <td th:text="'Q' + ${p.precio}"></td>
             <td th:text="${p.stock}"></td>
+            <td class="action-buttons">
+                <a th:href="@{/view/productos/editar/{id}(id=${p.codigoProducto})}" class="btn-edit">Editar</a>
+                <a th:href="@{/view/productos/eliminar/{id}(id=${p.codigoProducto})}" class="btn-delete">Eliminar</a>
+            </td>
         </tr>
         </tbody>
     </table>
