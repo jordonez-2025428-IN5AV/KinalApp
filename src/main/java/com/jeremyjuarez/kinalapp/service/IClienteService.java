@@ -14,6 +14,7 @@ public interface IClienteService {
     //Metodo q duelve una lista de todos los clientes
     List<Cliente> listarClientes();
     List<Cliente> listarActivos();
+    List<Cliente> buscar(String texto);
 
     /*
     * List hace q devuelva una lista de objetos de la entidad Cliente

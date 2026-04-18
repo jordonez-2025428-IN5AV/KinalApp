@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ClienteRepository extends JpaRepository<Cliente, String> {
     List<Cliente> findByEstado(int estado);
+    List<Cliente> findByDPIClienteContainingIgnoreCaseOrNombreClienteContainingIgnoreCase(String dpi, String nombre);
 }

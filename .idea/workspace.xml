@@ -6,21 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fadb6acd-ecf6-48a1-bcdd-b0faf54a7942" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/DetalleVenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/DetalleVenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/Ventas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/entity/Ventas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/repository/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/repository/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/ClienteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/IClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jeremyjuarez/kinalapp/service/IClienteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/clientes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/clientes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detalle-ventas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detalle-ventas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-cliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-cliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-detalle.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-detalle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-producto.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-producto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-usuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-venta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ventas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ventas.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1770838292786</updated>
-      <workItem from="1776456888955" duration="5324000" />
+      <workItem from="1776456888955" duration="6895000" />
     </task>
     <servers />
   </component>
