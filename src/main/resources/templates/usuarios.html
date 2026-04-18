@@ -16,10 +16,10 @@
         </div>
     </header>
 
-    <div class="search-container">
-        <input type="text" class="input-search" placeholder="Buscar usuario...">
-        <button class="btn-search">Buscar</button>
-    </div>
+    <form th:action="@{/view/usuarios/buscar}" method="get">
+        <input type="text" name="q" class="input-search" placeholder="Buscar usuario...">
+        <button type="submit" class="btn-search">Buscar</button>
+    </form>
 
     <table>
         <thead>
