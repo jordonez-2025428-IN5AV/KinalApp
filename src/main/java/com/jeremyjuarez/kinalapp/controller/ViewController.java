@@ -57,14 +57,12 @@ public class ViewController {
         return "form-usuario";
     }
 
-    // GUARDAR
     @PostMapping("/usuarios/guardar")
     public String guardarUsuario(@ModelAttribute Usuario usuario) {
         usuarioService.guardar(usuario);
         return "redirect:/view/usuarios";
     }
 
-    // ELIMINAR
     @GetMapping("/usuarios/eliminar/{id}")
     public String eliminarUsuario(@PathVariable String id, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -73,7 +71,6 @@ public class ViewController {
         return "redirect:/view/usuarios";
     }
 
-    // BUSCAR
     @GetMapping("/usuarios/buscar")
     public String buscarUsuario(@RequestParam("q") String query, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -101,7 +98,6 @@ public class ViewController {
         return "form-producto";
     }
 
-    // EDITAR
     @GetMapping("/productos/editar/{id}")
     public String editarProducto(@PathVariable String id, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -113,14 +109,12 @@ public class ViewController {
         return "form-producto";
     }
 
-    // GUARDAR
     @PostMapping("/productos/guardar")
     public String guardarProducto(@ModelAttribute Productos producto) {
         productoService.guardar(producto);
         return "redirect:/view/productos";
     }
 
-    // ELIMINAR
     @GetMapping("/productos/eliminar/{id}")
     public String eliminarProducto(@PathVariable String id, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -129,7 +123,6 @@ public class ViewController {
         return "redirect:/view/productos";
     }
 
-    // BUSCAR
     @GetMapping("/productos/buscar")
     public String buscarProducto(@RequestParam("q") String query, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -157,7 +150,6 @@ public class ViewController {
         return "form-cliente";
     }
 
-    // EDITAR (cargar datos en el formulario)
     @GetMapping("/clientes/editar/{id}")
     public String editarCliente(@PathVariable("id") String dpi, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -169,14 +161,12 @@ public class ViewController {
         return "form-cliente";
     }
 
-    // GUARDAR (crear + actualizar)
     @PostMapping("/clientes/guardar")
     public String guardarCliente(@ModelAttribute Cliente cliente) {
         clienteService.guardar(cliente);
         return "redirect:/view/clientes";
     }
 
-    // ELIMINAR
     @GetMapping("/clientes/eliminar/{id}")
     public String eliminarCliente(@PathVariable("id") String dpi, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -207,7 +197,6 @@ public class ViewController {
         return "clientes";
     }
 
-
     @GetMapping("/ventas")
     public String viewVentas(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -222,7 +211,6 @@ public class ViewController {
         return "form-venta";
     }
 
-    // EDITAR
     @GetMapping("/ventas/editar/{id}")
     public String editarVenta(@PathVariable String id, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -234,14 +222,12 @@ public class ViewController {
         return "form-venta";
     }
 
-    // GUARDAR
     @PostMapping("/ventas/guardar")
     public String guardarVenta(@ModelAttribute Ventas venta) {
         ventaService.guardar(venta);
         return "redirect:/view/ventas";
     }
 
-    // ELIMINAR
     @GetMapping("/ventas/eliminar/{id}")
     public String eliminarVenta(@PathVariable String id, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -250,7 +236,6 @@ public class ViewController {
         return "redirect:/view/ventas";
     }
 
-    // BUSCAR
     @GetMapping("/ventas/buscar")
     public String buscarVenta(@RequestParam("q") String query, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -263,8 +248,6 @@ public class ViewController {
         return "ventas";
     }
 
-
-    // LISTAR
     @GetMapping("/detalle-ventas")
     public String viewDetalles(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -273,7 +256,6 @@ public class ViewController {
         return "detalle-ventas";
     }
 
-    // NUEVO
     @GetMapping("/detalle-ventas/nuevo")
     public String nuevoDetalle(Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -282,7 +264,6 @@ public class ViewController {
         return "form-detalle";
     }
 
-    // EDITAR
     @GetMapping("/detalle-ventas/editar/{id}")
     public String editarDetalle(@PathVariable String id, Model model, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -294,14 +275,12 @@ public class ViewController {
         return "form-detalle";
     }
 
-    // GUARDAR
     @PostMapping("/detalle-ventas/guardar")
     public String guardarDetalle(@ModelAttribute DetalleVenta detalle) {
         detalleService.guardar(detalle);
         return "redirect:/view/detalle-ventas";
     }
 
-    // ELIMINAR
     @GetMapping("/detalle-ventas/eliminar/{id}")
     public String eliminarDetalle(@PathVariable String id, HttpSession session) {
         if (isNotLogged(session)) return "redirect:/";
@@ -310,7 +289,6 @@ public class ViewController {
         return "redirect:/view/detalle-ventas";
     }
 
-    // BUSCAR (por ID)
     @GetMapping("/detalle-ventas/buscar")
     public String buscarDetalle(@RequestParam(value = "codigo", required = false) String codigo,
                                 Model model, HttpSession session) {
