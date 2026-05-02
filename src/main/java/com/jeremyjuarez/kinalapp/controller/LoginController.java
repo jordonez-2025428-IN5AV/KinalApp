@@ -22,7 +22,7 @@ public class LoginController {
             session.setAttribute("usuarioLogueado", username);
 
             // Redirigimos al index
-            return "redirect:/index";
+            return "redirect:/home";
         } else {
             // Si falla, enviamos un mensaje de error y volvemos al login
             model.addAttribute("error", "Credenciales incorrectas");
