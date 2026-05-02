@@ -15,9 +15,10 @@
     </div>
 
     <form th:action="@{/login}" method="post">
+
         <div class="input-group">
             <label>Usuario</label>
-            <input type="text" name="user" placeholder="Ingresa tu usuario" required>
+            <input type="text" name="username" placeholder="Ingresa tu usuario" required>
         </div>
 
         <div class="input-group">
@@ -26,6 +27,7 @@
         </div>
 
         <button type="submit">Iniciar Sesión</button>
+
     </form>
 </div>
 
