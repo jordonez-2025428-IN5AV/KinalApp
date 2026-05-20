@@ -60,7 +60,7 @@ public class DetalleVentaController {
             return ResponseEntity.notFound().build();
         }
 
-        detalleVenta.setCodigoDetalleVenta(String.valueOf(codigo)); // IMPORTANTE
+        detalleVenta.setCodigoDetalleVenta(String.valueOf(codigo));
         return ResponseEntity.ok(detalleVentaService.guardar(detalleVenta));
     }
 
