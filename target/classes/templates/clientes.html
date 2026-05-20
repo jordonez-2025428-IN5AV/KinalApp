@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<div class="main-content">
+    <header class="page-header">
+        <h1>Clientes</h1>
+        <div>
+            <a th:href="@{/view/clientes/nuevo}" class="btn">Agregar</a>
+            <a th:href="@{/home}" class="btn-logout">Dashboard</a>
+        </div>
+    </header>
+
+    <form th:action="@{/view/clientes/buscar}" method="get">
+        <input type="text" name="dpi" placeholder="Buscar por DPI">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>DPI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Acciones</th> </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${lista}">
+            <td th:text="${c.DPICliente}"></td>
+            <td th:text="${c.nombreCliente}"></td>
+            <td th:text="${c.apellidoCliente}"></td>
+            <td th:text="${c.direccionCliente}"></td>
+            <td>
+                <span th:class="${c.estado == 1 ? 'badge badge-active' : 'badge badge-inactive'}"
+                      th:text="${c.estado == 1 ? 'Activo' : 'Inactivo'}"></span>
+            </td>
+            <td class="action-buttons">
+                <a th:href="@{/view/clientes/editar/{id}(id=${c.DPICliente})}" class="btn-edit">Editar</a>
+                <a th:href="@{/view/clientes/eliminar/{id}(id=${c.DPICliente})}"
+                   class="btn-delete" onclick="return confirm('¿Eliminar este cliente?')">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

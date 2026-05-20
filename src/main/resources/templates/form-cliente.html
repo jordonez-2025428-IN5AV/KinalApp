@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cliente</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+
+<div class="form-container">
+    <header class="page-header">
+        <h2 th:text="${cliente.DPICliente == null ? 'Nuevo Cliente' : 'Editar Cliente'}"></h2>
+    </header>
+
+    <form th:action="@{/view/clientes/guardar}" th:object="${cliente}" method="post">
+        <input type="text" th:field="*{DPICliente}" placeholder="DPI (ID)" th:readonly="${cliente.DPICliente != null}">
+        <input type="text" th:field="*{nombreCliente}" placeholder="Nombre" required>
+        <input type="text" th:field="*{apellidoCliente}" placeholder="Apellido" required>
+        <input type="text" th:field="*{direccionCliente}" placeholder="Dirección">
+
+        <label>Estado:</label>
+        <select th:field="*{estado}">
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+
+        <button type="submit" class="btn-search" style="width: 100%; margin-top: 10px;">Guardar Cliente</button>
+        <a th:href="@{/view/clientes}" class="cancel">← Volver a la lista</a>
+    </form>
+</div>
+
+</body>
+</html>

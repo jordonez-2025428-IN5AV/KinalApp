@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+
+<div class="main-content">
+    <div class="form-container">
+        <h2 th:text="${usuario.codigoUsuario == null ? 'Nuevo Usuario' : 'Editar Usuario'}"></h2>
+
+        <form th:action="@{/view/usuarios/guardar}" th:object="${usuario}" method="post">
+            <label>Código de Usuario</label>
+            <input type="text" th:field="*{codigoUsuario}" placeholder="Código" required
+                   th:readonly="${usuario.codigoUsuario != null}">
+
+            <label>Nombre de Usuario</label>
+            <input type="text" th:field="*{username}" placeholder="Username" required>
+
+            <label>Correo Electrónico</label>
+            <input type="email" th:field="*{email}" placeholder="Email" required>
+
+            <label>Contraseña</label>
+            <input type="password" th:field="*{password}" placeholder="Contraseña" required>
+
+            <label>Rol del Sistema</label>
+            <input type="text" th:field="*{rol}" placeholder="Ej: ADMIN, CAJERO">
+
+            <label>Estado de Cuenta</label>
+            <select th:field="*{estado}">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+
+            <button type="submit" class="btn-search" style="width: 100%;">Confirmar Datos</button>
+            <a th:href="@{/view/usuarios}" class="cancel">Cancelar cambios</a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

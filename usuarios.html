@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<div class="main-content">
+    <header class="page-header">
+        <h1>Usuarios</h1>
+        <div>
+            <a th:href="@{/view/usuarios/nuevo}" class="btn">Agregar</a>
+            <a th:href="@{/home}" class="btn-logout">Dashboard</a>
+        </div>
+    </header>
+
+    <form th:action="@{/view/usuarios/buscar}" method="get">
+        <input type="text" name="q" class="input-search" placeholder="Buscar usuario...">
+        <button type="submit" class="btn-search">Buscar</button>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u : ${lista}">
+            <td th:text="${u.codigoUsuario}"></td>
+            <td th:text="${u.username}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.rol}"></td>
+            <td>
+                <span th:class="${u.estado == 1 ? 'badge badge-active' : 'badge badge-inactive'}"
+                      th:text="${u.estado == 1 ? 'Activo' : 'Inactivo'}"></span>
+            </td>
+            <td class="action-buttons">
+                <a th:href="@{/view/usuarios/editar/{id}(id=${u.codigoUsuario})}" class="btn-edit">Editar</a>
+                <a th:href="@{/view/usuarios/eliminar/{id}(id=${u.codigoUsuario})}" class="btn-delete">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
